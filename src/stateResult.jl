@@ -21,7 +21,7 @@ function processPairs(stateResults::Vector{StateResult}, e::MktEvent)
         elseif e.isExec == 1 # is execution not rate update
             # if X milliseconds (tm) of results have not been accumulated,
             # update result
-            stateResults[i+1].result = Float64[e.bid, e.ask]
+            stateResults[i+1].result = [round((e.bid + e.ask)/2,3)]
         end
         i += 1
     end
